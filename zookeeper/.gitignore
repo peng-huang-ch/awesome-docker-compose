@@ -1,0 +1,4 @@
+*.tar
+data/
+logs/
+graylog_journal/
