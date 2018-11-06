@@ -1,0 +1,7 @@
+.git
+.gitignore
+.dockerignore
+Makefile
+README.md
+docker-compose.yml
+storage/
