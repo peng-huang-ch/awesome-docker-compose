@@ -36,6 +36,12 @@ services:
     ports:
       - "35672:15672"
       - "3672:5672"
+  
+  # logging:
+  #   driver: "gelf"
+  #   options:
+  #     gelf-address: "udp://127.0.0.1:12201"  # 127.0.0.1
+  #     labels: "dbs"
 
 volumes:
   rabbit-data:
