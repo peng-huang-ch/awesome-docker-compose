@@ -51,7 +51,7 @@ volumes:
 networks:
   default:
     # Use a custom driver
-    driver: custom-driver-1
+    driver: bridge
     
 # networks:    
 #   default:
