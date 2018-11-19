@@ -6,3 +6,7 @@
 [elasticsearch](./elasticsearch/README.md)
 
 [zookeeper](./zookeeper/README.md)
+
+[redis-cluster](./redis-cluster/README.md)
+
+[gitlab](./gitlab/README.md)
