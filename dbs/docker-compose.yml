@@ -35,7 +35,7 @@ services:
       - rabbit-data:/var/lib/rabbitmq
     ports:
       - "35672:15672"
-      - "3672:5672"
+      - "45672:5672"
   
   # logging:
   #   driver: "gelf"
