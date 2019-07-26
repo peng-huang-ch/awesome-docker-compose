@@ -1,0 +1,7 @@
+.git
+.dockerignore
+*.tar
+log/
+www/
+www
+!wwww/.gitkeep
