@@ -5,3 +5,4 @@ log/
 www/
 www
 !wwww/.gitkeep
+!wwww/index.html
