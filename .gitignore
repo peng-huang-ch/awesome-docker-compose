@@ -1,1 +1,14 @@
 .DS_Store
+.env
+
+**/data
+**/logs
+**/log
+
+*.log
+
+# build output
+dist
+build
+
+access.key

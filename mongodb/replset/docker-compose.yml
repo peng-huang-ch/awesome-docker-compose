@@ -1,0 +1,70 @@
+version: '3.4'
+
+x-logging:
+  &default-logging
+  options:
+    max-size: '12m'
+    max-file: '5'
+  driver: json-file
+
+x-entrypoint:
+  &default-entrypoint
+  - bash
+  - -c
+  - |
+    chmod 400 /etc/access.key
+    chown 999:999 /etc/access.key
+    exec docker-entrypoint.sh $$@
+
+services:
+  rs1:
+    restart: always
+    container_name: mongo_rs1
+    image: mongo:4.0
+    volumes:
+      - ./data/rs1:/data/db
+      - ./log/rs1:/var/log/mongodb
+      - ./access.key:/etc/access.key
+      - ./mongod.conf:/etc/mongod.conf
+    command: mongod --config /etc/mongod.conf
+    ports:
+      - "37017:27017"
+    networks:
+      - mongo
+    entrypoint: *default-entrypoint
+    logging: *default-logging
+  rs2:
+    restart: always
+    container_name: mongo_rs2
+    image: mongo:4.0
+    volumes:
+      - ./data/rs2:/data/db
+      - ./log/rs2:/var/log/mongodb
+      - ./access.key:/etc/access.key
+      - ./mongod.conf:/etc/mongod.conf
+    command: mongod --config /etc/mongod.conf
+    ports:
+      - "37018:27017"
+    networks:
+      - mongo
+    entrypoint: *default-entrypoint
+    logging: *default-logging
+  rs3:
+    restart: always
+    container_name: mongo_rs3
+    image: mongo:4.0
+    volumes:
+      - ./data/rs3:/data/db
+      - ./log/rs3:/var/log/mongodb
+      - ./access.key:/etc/access.key
+      - ./mongod.conf:/etc/mongod.conf
+    command: mongod --config /etc/mongod.conf
+    ports:
+      - "37019:27017"
+    networks:
+      - mongo
+    entrypoint: *default-entrypoint
+    logging: *default-logging
+
+networks:
+ mongo:
