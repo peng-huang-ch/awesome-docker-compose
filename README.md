@@ -13,5 +13,5 @@
 - [onpremise](https://github.com/getsentry/onpremise)
   
 - [redis](./redis/README.md)
-  - [redis-cluster](./redis/redis-cluster/README.md)
+  - [redis-cluster](./redis/redis-cluster-docker/README.md)
   - [redis-sentinel](./redis/redis-sentinel/README.md)
