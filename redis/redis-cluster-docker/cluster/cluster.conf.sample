@@ -1,0 +1,26 @@
+port ${PORT}
+pidfile /var/run/redis.pid
+
+cluster-enabled yes
+cluster-node-timeout 15000
+
+#集群内配置文件
+cluster-config-file nodes.conf
+
+#data目录
+dir /var/data/
+
+#log
+logfile /var/logs/redis.log
+
+maxmemory 50m
+appendonly yes
+################################ REDIS CLUSTER  ###############################
+# cluster-slave-validity-factor 10
+# cluster-migration-barrier 1
+# cluster-require-full-coverage yes
+# cluster-slave-no-failover no
+
+################################## SLOW LOG ###################################
+slowlog-log-slower-than 10000
+slowlog-max-len 128

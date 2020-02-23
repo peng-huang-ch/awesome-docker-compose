@@ -1,0 +1,79 @@
+version: "3.7"
+services: 
+    redis-cluster-6380: &node 
+        build:
+            context: ./cluster
+            dockerfile: Dockerfile
+        image: redis-cluster:dev
+        container_name: node-80
+        ports:
+            - "6380:6380"
+        volumes:
+            - ./data/node-80/logs:/var/logs
+            - ./data/node-80/data:/var/data
+        environment:
+            - PORT=6380
+            - CLUSTER_CONF_PATH=${CLUSTER_CONF_PATH}
+        command: [
+            '${CLUSTER_CONF_PATH}'
+        ]
+
+    redis-cluster-6381:
+        <<: *node
+        container_name: node-81
+        ports:
+            - "6381:6381"
+        volumes:
+            - ./data/node-81/logs:/var/logs
+            - ./data/node-81/data:/var/data
+        environment:
+            - PORT=6381
+        
+    redis-cluster-6382:
+        <<: *node
+        container_name: node-82
+        ports:
+            - "6382:6382"
+        volumes:
+            - ./data/node-82/logs:/var/logs
+            - ./data/node-82/data:/var/data
+        environment:
+            - PORT=6382
+            - CLUSTER_CONF_PATH=${CLUSTER_CONF_PATH}
+    
+    redis-cluster-6383:
+        <<: *node
+        container_name: node-83
+        ports:
+            - "6383:6383"
+        volumes:
+            - ./data/node-83/logs:/var/logs
+            - ./data/node-83/data:/var/data
+        environment:
+            - PORT=6383
+            - CLUSTER_CONF_PATH=${CLUSTER_CONF_PATH}
+    
+    redis-cluster-6384:
+        <<: *node
+        container_name: node-84
+        ports:
+            - "6384:6384"
+        volumes:
+            - ./data/node-84/logs:/var/logs
+            - ./data/node-84/data:/var/data
+        environment:
+            - PORT=6384
+            - CLUSTER_CONF_PATH=${CLUSTER_CONF_PATH}
+
+
+    redis-cluster-6385:
+        <<: *node
+        container_name: node-85
+        ports:
+            - "6385:6385"
+        volumes:
+            - ./data/node-85/logs:/var/logs
+            - ./data/node-85/data:/var/data
+        environment:
+            - PORT=6385
+            - CLUSTER_CONF_PATH=${CLUSTER_CONF_PATH}

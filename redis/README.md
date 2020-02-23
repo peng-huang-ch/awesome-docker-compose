@@ -1,5 +1,5 @@
 # reids
 
-[redis-cluster](./redis-cluster/README.md)
+[redis-cluster-docker](./redis-cluster-docker/README.md)
 
 [redis-sentinel](./redis-sentinel/README.md)
