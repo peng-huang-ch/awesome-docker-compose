@@ -7,17 +7,16 @@ services:
     ports:
       - 16379:6379
     volumes:
-      - type: bind
-        source: ./data/master/data
-        target: /data
+      - "./data/master/data:/data"
+      - "./data/master/logs:/var/log"
     command: [
+      '--logfile "/var/log/redis.log"',
       '--requirepass "${REDIS_PWD}"',
       '--masterauth "${REDIS_PWD}"',
       '--maxmemory 512mb',
       '--maxmemory-policy volatile-ttl',
       '--save ""',
     ]
-
 
   node-1: &node
     image: redis:4.0.8-alpine
@@ -26,13 +25,10 @@ services:
     ports:
       - 6380:6380
     volumes:
-      - type: bind
-        source: ./data/node-1/data
-        target: /data
-      - type: bind
-        source: ./data/node-1/tmp
-        target: /tmp
+      - "./data/node-1/data:/data"
+      - "./data/node-1/logs:/var/log"
     command: [
+      '--logfile "/var/log/redis.log"',
       '--port 6380',
       '--requirepass "${REDIS_PWD}"',
       '--slaveof master 6379',
@@ -47,13 +43,10 @@ services:
     ports:
       - 6381:6381
     volumes:
-      - type: bind
-        source: ./data/node-2/data
-        target: /data
-      - type: bind
-        source: ./data/node-2/tmp
-        target: /tmp
+      - "./data/node-2/data:/data"
+      - "./data/node-2/logs:/var/log"
     command: [
+      '--logfile "/var/log/redis.log"',
       '--port 6381',
       '--requirepass "${REDIS_PWD}"',
       '--slaveof master 6379',
@@ -64,13 +57,16 @@ services:
   sentinel-1: &sentinel
     build:
       context: ./sentinel
-      dockerfile: Dockerfile-sentinel
+      dockerfile: Dockerfile
     image: redis-sentinel:dev
     environment:
       - SENTINEL_REDIS_PWD=${REDIS_PWD}
       - SENTINEL_REDIS_IP=${SENTINEL_MASTER_NAME}
       - SENTINEL_QUORUM=2
       - SENTINEL_DOWN_AFTER=3000
+    volumes:
+      - "./data/sentinel-1/data:/tmp"
+      - "./data/sentinel-1/logs:/var/log"
     command: [
       '${SENTINEL_CONF_PATH}',
       '--sentinel'
@@ -86,8 +82,15 @@ services:
 
   sentinel-2:
     <<: *sentinel
+    volumes:
+      - "./data/sentinel-2/data:/tmp"
+      - "./data/sentinel-2/logs:/var/log"
+
   sentinel-3:
     <<: *sentinel
+    volumes:
+      - "./data/sentinel-3/data:/tmp"
+      - "./data/sentinel-3/logs:/var/log"
 
   nginx:
     image: nginx:1.13.9-alpine
@@ -102,10 +105,4 @@ services:
       - sentinel-1
       - sentinel-2
       - sentinel-3
-
-
-# volumes:
-#   master-data:
-#   node-1-data:
-#   node-2-data:
 

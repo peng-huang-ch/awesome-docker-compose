@@ -37,7 +37,7 @@ def get_redis_master_run_id(s: Sentinel, master_name: str) -> str:
 
 if __name__ == '__main__':
     redis_master_name = "redis-master"
-    redis_pwd = "P@ssw0rd"
+    redis_pwd = "pass"
     while True:
         sentinel = Sentinel([('localhost', 26379)], socket_timeout=0.1, password=redis_pwd)
         print("Redis Master Run ID : {}".format(get_redis_master_run_id(sentinel, redis_master_name)))
