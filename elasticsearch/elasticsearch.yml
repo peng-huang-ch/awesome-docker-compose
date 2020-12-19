@@ -3,9 +3,11 @@ node.name: node-master # 节点名，默认随机指定一个name列表中名字
 node.master: true
 node.data: true
 network.host: 0.0.0.0 # 绑定的ip地址, 可以是hostname或者ip地址，用来和集群中其他节点通信，同时会设置network.publish_host,以及network.bind_host
-network.publish_host: 10.0.20.160 #设置绑定的ip地址，生产环境则是实际的服务器ip，这个ip地址关系到实际搜索服务通信的地址，和服务在同一个集群环境的可以用内网ip，默认和network.host相同。
-discovery.zen.ping.unicast.hosts: ["10.0.20.160:9300"] #设置绑定的ip地址，可以是ipv4或ipv6的，默认和network.host相同。
+# network.publish_host: 10.0.20.160 #设置绑定的ip地址，生产环境则是实际的服务器ip，这个ip地址关系到实际搜索服务通信的地址，和服务在同一个集群环境的可以用内网ip，默认和network.host相同。
+# discovery.zen.ping.unicast.hosts: ["10.0.20.160:9300"] #设置绑定的ip地址，可以是ipv4或ipv6的，默认和network.host相同。
 discovery.zen.minimum_master_nodes: 1
 http.port: 9200 #设置对外服务的http端口，默认为9200
 transport.tcp.port: 9300 #节点间交互的tcp端口，默认是9300
 transport.tcp.compress: true #设置是否压缩tcp传输时的数据，默认为false，不压缩。
+
+xpack.license.self_generated.type: basic
