@@ -95,3 +95,17 @@ services:
       - "6650:6650"
       - "8080:8080"
     command: bash -c "bin/apply-config-from-env.py conf/broker.conf && exec bin/pulsar broker"
+  
+  # Start dashboard
+  dashboard:
+    image: apachepulsar/pulsar-manager:v0.3.0
+    restart: on-failure
+    networks:
+      - pulsar
+    ports:
+      - "9527:9527"
+      - "7750:7750"
+    depends_on:
+      - broker
+    environment:
+      SPRING_CONFIGURATION_FILE: /pulsar-manager/pulsar-manager/application.properties
