@@ -39,9 +39,8 @@
 
 - [pulsar](./pulsar/REMADE.md) - Pulsar is a multi-tenant, high-performance solution for server-to-server messaging.
 
-  - [standalone](./mongodb/standalone/README.md) - MongoDB Standalone
-  - [replica set](./mongodb/replica-set/README.md) - MongoDB Replica Set
-  - [sharding]() - MongoDB Sharding, TODO
+  - [standalone](./pulsar/pulsar-standone/README.md) - Pulsar Standalone
+  - [cluster](./pulsar/pulsar-cluster/README.md) - Pulsar Cluster
 
 ### Monitoring/Tracing/Logging
 
@@ -55,3 +54,7 @@
 
 - [frontend](./frontend/README.md) - A simple frontend application.
 - [gitlab](./gitlab/README.md) - GitLab is a web-based DevOps lifecycle tool that provides a Git repository manager providing wiki, issue-tracking and CI/CD pipeline features, using an open-source license, developed by GitLab Inc.
+- [portainer](./portainer/README.md) - Portainer is an open-source lightweight management UI which allows you to easily manage your Docker host or Swarm cluster.
+  - [agent](./portainer/agent/README.md) - Deploy Portainer with an agent
+  - [nginx-proxy](./portainer/nginx-proxy/README.md) - Deploy Portainer with an Nginx reverse proxy
+  - [traefik](./portainer/traefik/README.md) - Deploy Portainer with a Traefik reverse proxy
