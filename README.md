@@ -9,6 +9,7 @@
 
 ## Structure
 
+- [API Gateway](#api-gateway)
 - [Components](#components)
 - [Database](#database)
 - [Message Queue](#message-queue)
@@ -16,6 +17,10 @@
 - [Premises](#premises)
 
 ---
+
+### API Gateway
+
+- [kong](./kong/README.md) - Kong is a scalable, open source API Layer (also known as an API Gateway, or API Middleware). Kong runs in front of any RESTful API and is extended through plugins, which provide extra functionality and services beyond the core platform.
 
 ### Components
 
