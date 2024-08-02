@@ -1,5 +1,9 @@
 # Elastic stack (ELK) on Docker
 
-Based on [deviantony](https://github.com/deviantony) [docker-elk](https://github.com/deviantony/docker-elk)
+See the [docker-elk](https://github.com/deviantony/docker-elk) for more information.
 
-* [docker-elk](https://github.com/deviantony/docker-elk)
+Its based on the [official Docker images][elastic-docker] from Elastic:
+
+- [Elasticsearch](https://github.com/elastic/elasticsearch/tree/main/distribution/docker)
+- [Logstash](https://github.com/elastic/logstash/tree/main/docker)
+- [Kibana](https://github.com/elastic/kibana/tree/main/src/dev/build/tasks/os_packages/docker_generator)
