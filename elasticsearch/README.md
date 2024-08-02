@@ -1,7 +1,9 @@
-# 说明
+# Elasticsearch
 
-## 创建文件夹
+Elasticsearch is the search and analytics engine that powers the Elastic Stack.
 
-```sh
-mkdir -p es/{data}
-```
+## Overview
+
+- [Official Website](https://www.elastic.co/elasticsearch)
+- [Documentation](https://www.elastic.co/docs)
+- [GitHub](https://github.com/elastic/elasticsearch)
