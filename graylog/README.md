@@ -4,11 +4,11 @@ Graylog is a leading centralized log management solution built to open standards
 
 ## Introduction
 
-- [Official Website](https://www.graylog.org/)
+- [Website](https://www.graylog.org/)
 - [Documentation](https://docs.graylog.org/)
 - [GitHub](https://github.com/Graylog2/docker-compose)
 
-## Create data and log dir
+## Create volumes
 
 ```sh
 mkdir -p {es_data,graylog_journal,mongo_data}

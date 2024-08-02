@@ -1,6 +1,6 @@
 # MongoDB Standalone
 
-## Create data and log dir
+## Create volumes
 
 ```sh
 mkdir -p data/{db,log}

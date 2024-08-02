@@ -2,7 +2,7 @@
 
 The standalone mode runs all components inside a single Java Virtual Machine (JVM) process.
 
-## Create data and log dir
+## Create volumes
 
 ```sh
 mkdir -p data/{pulsar}

@@ -1,12 +1,12 @@
 # MongoDB Replica Set
 
-## Create data and log dir
+## Create volumes
 
 ```sh
 mkdir -p data/{rs1,rs2,rs3} log/{rs1,rs2,rs3}
 ```
 
-## 生成随机 key
+## Generate access.key
 
 ```sh
 openssl rand -base64 756 > access.key

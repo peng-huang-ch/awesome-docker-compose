@@ -1,6 +1,6 @@
 # Pulsar cluster
 
-## Create data and log dir
+## Create volumes
 
 ```sh
 mkdir -p data/{bookkeeper,zookeeper}
