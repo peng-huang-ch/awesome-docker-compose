@@ -14,7 +14,7 @@ Graylog is a leading centralized log management solution built to open standards
 mkdir -p {es_data,graylog_journal,mongo_data}
 ```
 
-## Start
+## How to use this Compose file
 
 ```sh
 docker-compose up -d

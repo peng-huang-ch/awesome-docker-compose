@@ -8,7 +8,7 @@ The standalone mode runs all components inside a single Java Virtual Machine (JV
 mkdir -p data/{pulsar}
 ```
 
-## Start
+## How to use this Compose file
 
 ```sh
 docker-compose up -d

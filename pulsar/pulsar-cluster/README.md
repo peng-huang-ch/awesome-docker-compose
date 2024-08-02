@@ -8,7 +8,7 @@ mkdir -p data/{bookkeeper,zookeeper}
 chown -R 10000 data
 ```
 
-## Start up
+## How to use this Compose file
 
 ```sh
 docker-compose up -d
