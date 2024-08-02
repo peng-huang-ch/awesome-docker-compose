@@ -1,3 +1,5 @@
+# https://pulsar.apache.org/docs/3.3.x/getting-started-docker-compose/
+
 version: '3'
 networks:
   pulsar:
@@ -5,7 +7,7 @@ networks:
 services:
   # Start zookeeper
   zookeeper:
-    image: apachepulsar/pulsar:3.0.0
+    image: apachepulsar/pulsar:latest
     container_name: zookeeper
     restart: on-failure
     networks:
@@ -19,8 +21,10 @@ services:
       bash -c "bin/apply-config-from-env.py conf/zookeeper.conf && \
              bin/generate-zookeeper-config.sh conf/zookeeper.conf && \
              exec bin/pulsar zookeeper"
+
+
     healthcheck:
-      test: ["CMD", "bin/pulsar-zookeeper-ruok.sh"]
+      test: ['CMD', 'bin/pulsar-zookeeper-ruok.sh']
       interval: 10s
       timeout: 5s
       retries: 30
@@ -29,7 +33,7 @@ services:
   pulsar-init:
     container_name: pulsar-init
     hostname: pulsar-init
-    image: apachepulsar/pulsar:3.0.0
+    image: apachepulsar/pulsar:latest
     networks:
       - pulsar
     command: >
@@ -39,13 +43,15 @@ services:
                --configuration-store zookeeper:2181 \
                --web-service-url http://broker:8080 \
                --broker-service-url pulsar://broker:6650
+
+
     depends_on:
       zookeeper:
         condition: service_healthy
 
   # Start bookie
   bookie:
-    image: apachepulsar/pulsar:3.0.0
+    image: apachepulsar/pulsar:latest
     container_name: bookie
     restart: on-failure
     networks:
@@ -70,7 +76,7 @@ services:
 
   # Start broker
   broker:
-    image: apachepulsar/pulsar:3.0.0
+    image: apachepulsar/pulsar:latest
     container_name: broker
     hostname: broker
     restart: on-failure
@@ -92,20 +98,6 @@ services:
       bookie:
         condition: service_started
     ports:
-      - "6650:6650"
-      - "8080:8080"
+      - '6650:6650'
+      - '8080:8080'
     command: bash -c "bin/apply-config-from-env.py conf/broker.conf && exec bin/pulsar broker"
-  
-  # Start dashboard
-  dashboard:
-    image: apachepulsar/pulsar-manager:v0.3.0
-    restart: on-failure
-    networks:
-      - pulsar
-    ports:
-      - "9527:9527"
-      - "7750:7750"
-    depends_on:
-      - broker
-    environment:
-      SPRING_CONFIGURATION_FILE: /pulsar-manager/pulsar-manager/application.properties

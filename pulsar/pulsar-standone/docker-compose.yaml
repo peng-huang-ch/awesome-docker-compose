@@ -1,20 +1,23 @@
+# https://pulsar.apache.org/docs/3.3.x/getting-started-docker-compose/
+# https://pulsar.apache.org/docs/3.3.x/getting-started-docker/
+
 version: '3'
 networks:
   pulsar:
     driver: bridge
 services:
   pulsar:
-    image: apachepulsar/pulsar:2.6.0
+    image: apachepulsar/pulsar:3.3.1
     restart: on-failure
     networks:
       - pulsar
     command: bin/pulsar standalone
     hostname: pulsar
     ports:
-      - "8080:8080"
-      - "6650:6650"
+      - '8080:8080'
+      - '6650:6650'
     volumes:
-      - "./data/pulsar/:/pulsar/data"
+      - './data/pulsar/:/pulsar/data'
 
   dashboard:
     image: apachepulsar/pulsar-manager:v0.3.0
@@ -22,8 +25,8 @@ services:
     networks:
       - pulsar
     ports:
-      - "9527:9527"
-      - "7750:7750"
+      - '9527:9527'
+      - '7750:7750'
     depends_on:
       - pulsar
     links:

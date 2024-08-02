@@ -1,18 +1,20 @@
-# 创建存储和日志目录
+# Pulsar cluster
+
+## Create data and log dir
 
 ```sh
 mkdir -p data/{bookkeeper,zookeeper}
+# this step might not be necessary on other than Linux platforms
+chown -R 10000 data
 ```
 
-## 初始化启动
-
-- 启动
+## Start up
 
 ```sh
 docker-compose up -d
 ```
 
-## 配置 pulsar manager
+## Pulsar Manager
 
 ```sh
 Name: cluster-a
