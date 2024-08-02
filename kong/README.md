@@ -10,7 +10,7 @@
 - [GitHub](https://github.com/Kong/kong)
 - [Docker Hub](https://hub.docker.com/_/kong)
   
-## You can find the latest Compose file in the [Kong in Docker Compose](https://github.com/Kong/docker-kong/blob/master/compose/README.md) which is the official Docker Compose template for Kong Gateway.
+> You can find the latest Compose file in the [Kong in Docker Compose](https://github.com/Kong/docker-kong/blob/master/compose/README.md) which is the official Docker Compose template for Kong Gateway.
 
 ## How to use this Compose file
 
