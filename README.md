@@ -19,9 +19,9 @@
 
 ### Components
 
-- [elasticsearch](./elasticsearch/README.md) - Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases.
-- [logstash](https://www.elastic.co/logstash) - Logstash is a server-side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a "stash" like Elasticsearch.
-- [kibana](https://www.elastic.co/kibana) - Kibana lets you visualize your Elasticsearch data and navigate the Elastic Stack.
+- [elastic](https://www.elastic.co) - Elastic Stack (ELK) on Docker
+  - [logstash](https://www.elastic.co/logstash) - Logstash is a server-side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a "stash" like Elasticsearch.
+  - [kibana](https://www.elastic.co/kibana) - Kibana lets you visualize your Elasticsearch data and navigate the Elastic Stack.
 
 ### Database
 
@@ -51,6 +51,7 @@
 - [docker-elk](./docker-elk/README.md) - Elastic stack (ELK) on Docker
 - [graylog](./graylog/README.md) - Graylog is a leading centralized log management solution built to open standards for capturing, storing, and enabling real-time analysis of terabytes of machine data.
 - [getsentry](https://github.com/getsentry/self-hosted) - Sentry is an open-source platform for workflow productivity, aggregating errors from across the stack in real time.
+- [jaeger](./jaeger/README.md) - Jaeger, a Distributed Tracing System
 
 ### Premises
 
