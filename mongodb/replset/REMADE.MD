@@ -1,10 +1,12 @@
-# 创建存储和日志目录
+# MongoDB Replica Set
+
+## Create data and log dir
 
 ```sh
 mkdir -p data/{rs1,rs2,rs3} log/{rs1,rs2,rs3}
 ```
 
-## 生成随机key
+## 生成随机 key
 
 ```sh
 openssl rand -base64 756 > access.key
@@ -12,7 +14,7 @@ openssl rand -base64 756 > access.key
 
 ## 初始化启动
 
-- 注释, 不启用auth
+- 注释, 不启用 auth
 
 ```sh
    # security:
@@ -49,7 +51,7 @@ rs.status() //查看副本级状态
 
 ```
 
-- 创建admin用户
+- 创建 admin 用户
 
 ```sh
 db.createUser({user: "admin",pwd: "password",roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]});
