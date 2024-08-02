@@ -16,4 +16,7 @@ onpremise
 access.key
 
 *.zip
+*.tgz
 *.idea
+
+.vscode
