@@ -1,6 +1,6 @@
 # 说明
 
-   本项目只是用于演示，若部署到服务器，请使用[Grokzen](https://github.com/Grokzen/docker-redis-cluster)
+本项目只是用于演示，若部署到服务器，请使用[Grokzen](https://github.com/Grokzen/docker-redis-cluster)
 
 ## 准备
 
@@ -52,8 +52,8 @@ Cluster nodes 查看集群节点信息
 
 ## 集群快速搭建
 
-通过 `docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container-name` 可以查看各个节点在容器内网的ip，
-下面的命令须使用ip而非容器名称, 宿主机ip未尝试
+通过 `docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container-name` 可以查看各个节点在容器内网的 ip，
+下面的命令须使用 ip 而非容器名称, 宿主机 ip 未尝试
 
 ```sh
 docker exec -it node-80 redis-cli -p 6380 --cluster create {node-80 ip}:6380  {node-81 ip}:6381  {node-82 ip}:6382  {node-83 ip}:6383  {node-84 ip}:6384  {node-85 ip}:6385 --cluster-replicas 1
@@ -129,10 +129,10 @@ docker exec -it node-80 redis-cli -p 6380 get xxx
 
 ### 节点握手
 
-   节点握手是指一批运行在集群模式下的节点通过Gossip协议彼此通信，达到感知对方的过
+节点握手是指一批运行在集群模式下的节点通过 Gossip 协议彼此通信，达到感知对方的过
 
->命令 `cluster meet {ip} {port}`  
->加入节点到集群，此时集群还是未启动成功，因为`slot`未完全分配
+> 命令 `cluster meet {ip} {port}`  
+> 加入节点到集群，此时集群还是未启动成功，因为`slot`未完全分配
 
 ```sh
 docker exec -it node-80 redis-cli -p 6380
@@ -174,8 +174,8 @@ cluster_stats_messages_received:422
 
 ### 分配槽
 
->slots个数：16384  
->cluster addslots {0..5461}
+> slots 个数：16384  
+> cluster addslots {0..5461}
 
 ```sh
 docker exec -it node-80 redis-cli -p 6380 cluster addslots {0..6000}
@@ -188,7 +188,7 @@ OK
 
 #### 分配槽集群信息
 
-   cluster_slots_assigned 为 `16384`，此时集群还是启动成功
+cluster_slots_assigned 为 `16384`，此时集群还是启动成功
 
 ```sh
 127.0.0.1:6380> cluster info
@@ -237,7 +237,7 @@ d6b6dfc2af537d755558d7439fff27f18105ec61 192.168.32.2:6385@16385 master - 0 1582
 
 #### 绑定从节点
 
-   cluster replicate id
+cluster replicate id
 
 ```sh
 docker exec -it node-83 redis-cli -p 6383 cluster replicate 988e22fc70bae1151012fbcc5886658753b6cbe2 # to 6380
@@ -276,6 +276,6 @@ d6b6dfc2af537d755558d7439fff27f18105ec61 192.168.32.2:6385@16385 slave ba6eaf31c
 
 ### 参考
 
-* [docker-redis-cluster(Grokzen)](https://github.com/Grokzen/docker-redis-cluster)
-* [redis-cluster(AliyunContainerService)](https://github.com/AliyunContainerService/redis-cluster)
-* [docker-compose搭建redis集群及可用性实践](https://juejin.im/post/5d4afaaf518825403769dd44)
+- [docker-redis-cluster(Grokzen)](https://github.com/Grokzen/docker-redis-cluster)
+- [redis-cluster(AliyunContainerService)](https://github.com/AliyunContainerService/redis-cluster)
+- [docker-compose 搭建 redis 集群及可用性实践](https://juejin.im/post/5d4afaaf518825403769dd44)
