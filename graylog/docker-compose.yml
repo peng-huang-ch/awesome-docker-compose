@@ -1,63 +1,74 @@
-version: '2'
+# https://github.com/Graylog2/docker-compose/blob/main/open-core/docker-compose.yml
+
+# For DataNode setup, graylog starts with a preflight UI, this is a change from just using OpenSearch/Elasticsearch.
+# Please take a look at the README at the top of this repo or the regular docs for more info.
+
 services:
-  # MongoDB: https://hub.docker.com/_/mongo/
   mongodb:
-    image: mongo:3
+    image: 'mongo:5.0'
     volumes:
-      - mongo_data:/data/db
-  # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
-    volumes:   
-      - es_data:/usr/share/elasticsearch/data
+      - 'mongodb_data:/data/db'
+    restart: 'on-failure'
+
+  # For DataNode setup, graylog starts with a preflight UI, this is a change from just using OpenSearch/Elasticsearch.
+  # Please take a look at the README at the top of this repo or the regular docs for more info.
+  datanode:
+    image: '${DATANODE_IMAGE:-graylog/graylog-datanode:6.0}'
+    hostname: 'datanode'
     environment:
-      - http.host=0.0.0.0
-      - transport.host=localhost
-      - network.host=0.0.0.0
-      # Disable X-Pack security: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/security-settings.html#general-security-settings
-      - xpack.security.enabled=false
-      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"
+      GRAYLOG_DATANODE_NODE_ID_FILE: '/var/lib/graylog-datanode/node-id'
+      GRAYLOG_DATANODE_PASSWORD_SECRET: '${GRAYLOG_PASSWORD_SECRET:?Please configure GRAYLOG_PASSWORD_SECRET in the .env file}'
+      GRAYLOG_DATANODE_ROOT_PASSWORD_SHA2: '${GRAYLOG_ROOT_PASSWORD_SHA2:?Please configure GRAYLOG_ROOT_PASSWORD_SHA2 in the .env file}'
+      GRAYLOG_DATANODE_MONGODB_URI: 'mongodb://mongodb:27017/graylog'
     ulimits:
       memlock:
-        soft: -1
         hard: -1
-    mem_limit: 2g
-    # mem_limit: 4g
-  # Graylog: https://hub.docker.com/r/graylog/graylog/
-  graylog:
-    image: graylog/graylog:2.4.0-1
-    volumes:
-      - graylog_journal:/usr/share/graylog/data/journal
-    environment:
-      # CHANGE ME!
-      - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
-      # Password: admin
-      - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-      - GRAYLOG_WEB_ENDPOINT_URI=http://10.0.20.160:19100/api
-      # - GRAYLOG_WEB_ENDPOINT_URI=http://0.0.0.0:19100/api
-      #- GRAYLOG_WEB_ENDPOINT_URI=https://elk.freesnow.com/api
-    links:
-      - mongodb:mongo
-      - elasticsearch
-    depends_on:
-      - mongodb
-      - elasticsearch
+        soft: -1
+      nofile:
+        soft: 65536
+        hard: 65536
     ports:
-      # Graylog web interface and REST API
-      - 19100:9000
-      # Syslog TCP
-      - 514:514
-      # Syslog UDP
-      - 514:514/udp
-      # GELF TCP
-      - 12201:12201
-      # GELF UDP
-      - 12201:12201/udp
-# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/
+      - '8999:8999/tcp' # DataNode API
+      - '9200:9200/tcp'
+      - '9300:9300/tcp'
+    volumes:
+      - 'graylog-datanode:/var/lib/graylog-datanode'
+    restart: 'on-failure'
+
+  graylog:
+    hostname: 'server'
+    image: '${GRAYLOG_IMAGE:-graylog/graylog:6.0}'
+    depends_on:
+      mongodb:
+        condition: 'service_started'
+    entrypoint: '/usr/bin/tini --  /docker-entrypoint.sh'
+    environment:
+      GRAYLOG_NODE_ID_FILE: '/usr/share/graylog/data/data/node-id'
+      GRAYLOG_PASSWORD_SECRET: '${GRAYLOG_PASSWORD_SECRET:?Please configure GRAYLOG_PASSWORD_SECRET in the .env file}'
+      GRAYLOG_ROOT_PASSWORD_SHA2: '${GRAYLOG_ROOT_PASSWORD_SHA2:?Please configure GRAYLOG_ROOT_PASSWORD_SHA2 in the .env file}'
+      GRAYLOG_HTTP_BIND_ADDRESS: '0.0.0.0:9000'
+      GRAYLOG_HTTP_EXTERNAL_URI: 'http://localhost:9000/'
+      GRAYLOG_MONGODB_URI: 'mongodb://mongodb:27017/graylog'
+    ports:
+      - '5044:5044/tcp' # Beats
+      - '5140:5140/udp' # Syslog
+      - '5140:5140/tcp' # Syslog
+      - '5555:5555/tcp' # RAW TCP
+      - '5555:5555/udp' # RAW UDP
+      - '9000:9000/tcp' # Server API
+      - '12201:12201/tcp' # GELF TCP
+      - '12201:12201/udp' # GELF UDP
+      #- "10000:10000/tcp" # Custom TCP port
+      #- "10000:10000/udp" # Custom UDP port
+      - '13301:13301/tcp' # Forwarder data
+      - '13302:13302/tcp' # Forwarder config
+    volumes:
+      - 'graylog_data:/usr/share/graylog/data/data'
+      - 'graylog_journal:/usr/share/graylog/data/journal'
+    restart: 'on-failure'
+
 volumes:
-  mongo_data:
-    driver: local
-  es_data:
-    driver: local
+  mongodb_data:
+  graylog-datanode:
+  graylog_data:
   graylog_journal:
-    driver: local

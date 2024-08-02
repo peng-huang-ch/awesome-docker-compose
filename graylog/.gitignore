@@ -1,4 +1,5 @@
 *.tar
-es_data/
-mongo_data/
+mongodb_data/
+graylog-datanode/
+graylog_data/
 graylog_journal/
