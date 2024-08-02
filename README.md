@@ -20,8 +20,8 @@
 ### Components
 
 - [elasticsearch](./elasticsearch/README.md) - Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases.
-- [logstash](./logstash/README.md) - Logstash is a server-side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a "stash" like Elasticsearch.
-- [kibana](./kibana/README.md) - Kibana lets you visualize your Elasticsearch data and navigate the Elastic Stack.
+- [logstash](https://www.elastic.co/logstash) - Logstash is a server-side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a "stash" like Elasticsearch.
+- [kibana](https://www.elastic.co/kibana) - Kibana lets you visualize your Elasticsearch data and navigate the Elastic Stack.
 
 ### Database
 
@@ -35,6 +35,8 @@
   - [redis-cluster](./redis/redis-cluster/README.md)
   - [redis-sentinel](./redis/redis-sentinel/README.md)
 
+- [elasticsearch](./elasticsearch/README.md#elasticsearch) - Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases.
+
 ### Message Queue
 
 - [pulsar](./pulsar/REMADE.md) - Pulsar is a multi-tenant, high-performance solution for server-to-server messaging.
@@ -44,7 +46,7 @@
 
 ### Monitoring/Tracing/Logging
 
-- [dockotlp](https://github.com/peng-huang-ch/dockotlp) - A monitoring and Otel solution.
+- [dockotlp](https://github.com/peng-huang-ch/dockotlp) - A monitoring and Otel solution for Docker hosts and containers with Prometheus, Grafana, Loki, Promtail, Tempo and alerting with AlertManager.
 - [dockprom](https://github.com/stefanprodan/dockprom) - A monitoring solution for Docker hosts and containers with Prometheus, Grafana, cAdvisor, NodeExporter and alerting with AlertManager.
 - [docker-elk](./docker-elk/README.md) - Elastic stack (ELK) on Docker
 - [graylog](./graylog/README.md) - Graylog is a leading centralized log management solution built to open standards for capturing, storing, and enabling real-time analysis of terabytes of machine data.

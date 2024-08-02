@@ -27,20 +27,7 @@ services:
       - 5601:5601
     networks: 
       - elk
-
-  # redis:
-  #   image: redis
-  #   container_name: redis
-  #   depends_on:
-  #     - logstash
-  #   ports:
-  #     - 6379:6379
-  #   logging:
-  #     driver: gelf
-  #     options:
-  #       gelf-address: "udp://localhost:12201"
-  #       tag: "redis"
-
+      
 networks: 
   elk:
     driver: bridge
