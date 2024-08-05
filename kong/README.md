@@ -64,6 +64,21 @@ with your own environment variables or datastore configuration.
 
 > Kong Manager only available in the Enterprise version of Kong. You can use the kong:kong-gateway tag to use the open-source version of Kong.
 
+Kong Manager is a web-based UI for managing Kong Gateway.
+
+```shell
+KONG_DOCKER_TAG=kong/kong-gateway:3.7.0.0 COMPOSE_PROFILES=database KONG_DATABASE=postgres docker-compose -f docker-compose.yaml up -d
+```
+docker-compose ps
+```shell
+NAME          IMAGE                       COMMAND                  SERVICE   CREATED      STATUS                PORTS
+kong-db-1     postgres:13                 "docker-entrypoint.s…"   db        2 days ago   Up 2 days (healthy)   0.0.0.0:5555->5432/tcp
+kong-kong-1   kong/kong-gateway:3.7.0.0   "/entrypoint.sh kong…"   kong      2 days ago   Up 2 days (healthy)   0.0.0.0:8000-8002->8000-8002/tcp, 8003-8004/tcp, 0.0.0.0:8443-8444->8443-8444/tcp, 8445-8447/tcp
+```
+
+Kong Manager is available on port `8002` and `8444`. You can access Kong Manager by visiting `http://localhost:8002` or `https://localhost:8444` in your browser.
+![kong manager](./docs/manager.png)
+
 [kong-docs-url]: https://docs.konghq.com/
 [kong-docs-dbless]: https://docs.konghq.com/gateway/latest/production/deployment-topologies/db-less-and-declarative-config/#main
 [kong-docs-dbless-file]: https://docs.konghq.com/gateway/latest/production/deployment-topologies/db-less-and-declarative-config/#declarative-configuration-format
