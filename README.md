@@ -4,8 +4,10 @@
 
 ### Thanks the following projects
 
-- [awesome-docker](https://github.com/veggiemonk/awesome-docker) A curated list of Docker resources and projects. - [@veggiemonk](https://github.com/veggiemonk)
-- [awesome-compose](https://github.com/docker/awesome-compose) A curated list of Docker Compose samples. - [@docker](https://github.com/docker)
+- [awesome-docker](https://github.com/veggiemonk/awesome-docker) A curated list of Docker resources and projects. By [@veggiemonk](https://github.com/veggiemonk)
+- [awesome-compose](https://github.com/docker/awesome-compose) A curated list of Docker Compose samples. By [@docker](https://github.com/docker)
+- [awesome-sysadmin](https://github.com/awesome-foss/awesome-sysadmin) A curated list of amazingly awesome Free and Open-Source sysadmin resources. By [@awesome-foss](https://github.com/awesome-foss)
+- [docker-compose](https://github.com/awesome-startup/docker-compose) A curated list of Docker Compose samples for startups. By [@awesome-startup](https://github.com/awesome-startup)
 
 ## Structure
 
@@ -53,7 +55,7 @@
 
 - [dockotlp](https://github.com/peng-huang-ch/dockotlp) - A monitoring and Otel solution for Docker hosts and containers with Prometheus, Grafana, Loki, Promtail, Tempo and alerting with AlertManager.
 - [dockprom](https://github.com/stefanprodan/dockprom) - A monitoring solution for Docker hosts and containers with Prometheus, Grafana, cAdvisor, NodeExporter and alerting with AlertManager.
-- [docker-elk](./docker-elk/README.md) - Elastic stack (ELK) on Docker
+- [elastic-stack](./elastic-stack/README.md) - Elastic stack (ELK) on Docker
 - [graylog](./graylog/README.md) - Graylog is a leading centralized log management solution built to open standards for capturing, storing, and enabling real-time analysis of terabytes of machine data.
 - [getsentry](https://github.com/getsentry/self-hosted) - Sentry is an open-source platform for workflow productivity, aggregating errors from across the stack in real time.
 - [jaeger](./jaeger/README.md) - Jaeger, a Distributed Tracing System

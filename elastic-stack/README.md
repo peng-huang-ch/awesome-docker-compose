@@ -10,6 +10,12 @@ Elasticsearch is the search and analytics engine that powers the Elastic Stack.
 - [Documentation](https://www.elastic.co/docs)
 - [GitHub](https://github.com/elastic/elasticsearch)
   
+### Logstash
+
+- [Website](https://www.elastic.co/logstash)
+- [Documentation](https://www.elastic.co/docs)
+- [GitHub](https://github.com/elastic/logstash)
+  
 ### Kibana
 
 - [Website](https://www.elastic.co/kibana)
