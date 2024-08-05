@@ -4,8 +4,8 @@
 
 ### Thanks the following projects
 
-- [awesome-docker](https://github.com/veggiemonk/awesome-docker) A curated list of Docker resources and projects.
-- [awesome-compose](https://github.com/docker/awesome-compose) A curated list of Docker Compose samples.
+- [awesome-docker](https://github.com/veggiemonk/awesome-docker) A curated list of Docker resources and projects. - [@veggiemonk](https://github.com/veggiemonk)
+- [awesome-compose](https://github.com/docker/awesome-compose) A curated list of Docker Compose samples. - [@docker](https://github.com/docker)
 
 ## Structure
 
