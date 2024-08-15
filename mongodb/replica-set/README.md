@@ -12,9 +12,11 @@ mkdir -p data/{rs1,rs2,rs3} log/{rs1,rs2,rs3}
 openssl rand -base64 756 > access.key
 ```
 
-## 初始化启动
+## Launch without authentication
 
-- 注释, 不启用 auth
+### comment out the following content of `mongod.conf`
+
+```yml
 
 ```sh
    # security:
@@ -22,13 +24,13 @@ openssl rand -base64 756 > access.key
    #   authorization: enabled
 ```
 
-- 启动
+- Startup
 
 ```sh
 docker-compose up -d
 ```
 
-- 初始化 rs
+### Init replica set
 
 ```sh
 docker-compose exec rs1 mongo
@@ -45,19 +47,19 @@ rs.initiate(
    }
 );
 
-rs.conf() //查看配置
+rs.conf() // see the conf of replica set
 
-rs.status() //查看副本级状态
+rs.status() // see the status of replica set
 
 ```
 
-- 创建 admin 用户
+### Create Admin User
 
 ```sh
 db.createUser({user: "admin",pwd: "password",roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]});
 ```
 
-- 创建库和用户
+### Create Database And User
 
 ```sh
 use dbname
@@ -69,9 +71,9 @@ db.createUser({user: "read",pwd: "password",roles: [ { role: "read", db: "bt-nod
 db.grantRolesToUser("dbOwner",[ "readWrite" , { role: "readWrite", db: "bt-node" } ]);
 ```
 
-## 开启用户认证
+## Launch with authentication
 
-- 放开注释
+### Uncomment the following content of `mongod.conf`
 
 ```sh
 security:
@@ -79,7 +81,7 @@ security:
   authorization: enabled
 ```
 
-- 启动
+- Restart
 
 ```sh
 docker-compose up -d

@@ -2,7 +2,7 @@
 
 > A curated list of Docker compose resources and projects
 
-### Thanks the following projects
+### Acknowledgements
 
 - [awesome-docker](https://github.com/veggiemonk/awesome-docker) A curated list of Docker resources and projects. By [@veggiemonk](https://github.com/veggiemonk)
 - [awesome-compose](https://github.com/docker/awesome-compose) A curated list of Docker Compose samples. By [@docker](https://github.com/docker)
@@ -16,7 +16,7 @@
 - [Database](#database)
 - [Message Queue](#message-queue)
 - [Monitoring/Tracing/Logging](#monitoringtracinglogging)
-- [Premises](#premises)
+- [Additional](#additional)
 
 ---
 
@@ -46,7 +46,7 @@
 
 ### Message Queue
 
-- [pulsar](./pulsar/REMADE.md) - Pulsar is a multi-tenant, high-performance solution for server-to-server messaging.
+- [pulsar](./pulsar/README.md) - Pulsar is a multi-tenant, high-performance solution for server-to-server messaging.
 
   - [standalone](./pulsar/pulsar-standone/README.md) - Pulsar Standalone
   - [cluster](./pulsar/pulsar-cluster/README.md) - Pulsar Cluster
@@ -60,7 +60,7 @@
 - [getsentry](https://github.com/getsentry/self-hosted) - Sentry is an open-source platform for workflow productivity, aggregating errors from across the stack in real time.
 - [jaeger](./jaeger/README.md) - Jaeger, a Distributed Tracing System
 
-### Premises
+### Additional
 
 - [frontend](./frontend/README.md) - A simple frontend application.
 - [gitlab](./gitlab/README.md) - GitLab is a web-based DevOps lifecycle tool that provides a Git repository manager providing wiki, issue-tracking and CI/CD pipeline features, using an open-source license, developed by GitLab Inc.

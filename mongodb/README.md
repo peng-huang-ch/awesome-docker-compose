@@ -10,4 +10,4 @@ MongoDB is a NoSQL database that stores data in JSON-like documents. It is a pop
 
 - [standalone](./standalone/README.md)
 - [replica set](./replica-set/README.md)
-- [sharding] - #TODO
+- [sharding] - TODO
