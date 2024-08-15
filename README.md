@@ -32,7 +32,7 @@
 
 ### Database
 
-- [mongodb](./mongodb/readme.md) - MongoDB is a NoSQL database that stores data in JSON-like documents. It is a popular choice for web applications and other projects that require a scalable, flexible database.
+- [mongodb](./mongodb/README.md) - MongoDB is a NoSQL database that stores data in JSON-like documents. It is a popular choice for web applications and other projects that require a scalable, flexible database.
 
   - [standalone](./mongodb/standalone/README.md) - MongoDB Standalone
   - [replica set](./mongodb/replica-set/README.md) - MongoDB Replica Set
