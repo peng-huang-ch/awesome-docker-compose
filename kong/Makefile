@@ -6,7 +6,7 @@ IS_ARM := $(shell [ "$(UNAME_MACHINE)" = "arm64" ] && echo 1 || echo 0)
 DOCKER_DEFAULT_PLATFORM := $(if $(filter 1,$(IS_ARM)),linux/amd64,)
 
 # Define default profile and tags
-KONG_DOCKER_TAG := kong/kong-gateway:3.7.0.0
+KONG_DOCKER_TAG := kong/kong:3.8
 KONG_DATABASE := postgres
 
 # Targets
@@ -19,13 +19,13 @@ ifeq ($(IS_ARM),1)
 endif
 
 kong-postgres: prepare
-	COMPOSE_PROFILES=database KONG_DATABASE=postgres docker compose up -d
+	KONG_DOCKER_TAG=kong/kong:3.8 COMPOSE_PROFILES=database KONG_DATABASE=postgres docker compose up -d
 
 kong-dbless: prepare
 	docker-compose -f docker-compose.yaml up -d
 
 kong-gateway: prepare
-	KONG_DOCKER_TAG=kong/kong-gateway:3.7.0.0 COMPOSE_PROFILES=database KONG_DATABASE=postgres docker-compose -f docker-compose.yaml up -d
+	KONG_DOCKER_TAG=kong/kong-gateway:3.8 COMPOSE_PROFILES=database KONG_DATABASE=postgres docker compose -f docker-compose.yaml up -d
 
 clean: prepare
 	docker-compose down --remove-orphans

@@ -1,9 +1,11 @@
+# https://github.com/Kong/docker-kong/blob/master/compose/docker-compose.yml
 version: "3.9"
 
 x-kong-config: &kong-env
   KONG_DATABASE: ${KONG_DATABASE:-postgres}
   KONG_PG_DATABASE: ${KONG_PG_DATABASE:-kong}
-  KONG_PG_HOST: db
+  KONG_PG_HOST: ${KONG_PG_HOST:-db}
+  KONG_PG_PORT: ${KONG_PG_PORT:-5432}
   KONG_PG_USER: ${KONG_PG_USER:-kong}
   KONG_PG_PASSWORD: ${KONG_PG_PASSWORD:-kongpass}
 
@@ -47,7 +49,6 @@ services:
       KONG_PROXY_ACCESS_LOG: /dev/stdout
       KONG_PROXY_ERROR_LOG: /dev/stderr
       KONG_PREFIX: ${KONG_PREFIX:-/var/run/kong}
-      KONG_HEADERS: off
       KONG_DECLARATIVE_CONFIG: "/opt/kong/kong.yaml"
       KONG_TRUSTED_IPS: 0.0.0.0/0,::/0
       KONG_REAL_IP_HEADER: X-Forwarded-For
