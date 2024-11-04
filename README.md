@@ -68,3 +68,4 @@
   - [agent](./portainer/agent/README.md) - Deploy Portainer with an agent
   - [nginx-proxy](./portainer/nginx-proxy/README.md) - Deploy Portainer with an Nginx reverse proxy
   - [traefik](./portainer/traefik/README.md) - Deploy Portainer with a Traefik reverse proxy
+- [metabase](./metabase/README.md) `Metabase` is an open-source analytics platform that allows you to ask questions about your data and get answers.
